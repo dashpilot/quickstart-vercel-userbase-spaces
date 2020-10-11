@@ -12,5 +12,5 @@ module.exports = (req, res) => {
         .then((json) => console.log(json))
         .catch((err) => console.error(err));
 
-    res.send(`Hello world`);
+    res.json({ ok: true });
 };
