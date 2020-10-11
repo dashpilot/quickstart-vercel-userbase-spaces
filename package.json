@@ -1,0 +1,23 @@
+{
+  "name": "quickstart-vercel-userbase-spaces",
+  "version": "1.0.0",
+  "description": "Add auth and saving to Digitalocean Spaces to your Vercel projects",
+  "main": "index.js",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dashpilot/quickstart-vercel-userbase-spaces.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dashpilot/quickstart-vercel-userbase-spaces/issues"
+  },
+  "homepage": "https://github.com/dashpilot/quickstart-vercel-userbase-spaces#readme"
+}
