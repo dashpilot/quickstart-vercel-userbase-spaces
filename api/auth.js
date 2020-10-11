@@ -9,8 +9,9 @@ module.exports = (req, res) => {
             },
         })
         .then((res) => res.json())
-        .then((json) => console.log(json))
+        .then(function(json) {
+            console.log(json);
+            res.json({ ok: true, data: json });
+        })
         .catch((err) => console.error(err));
-
-    res.json({ ok: true });
 };
