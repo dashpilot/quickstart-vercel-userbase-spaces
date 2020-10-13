@@ -76,13 +76,11 @@
                     rememberMe: "session",
                 })
                 .then(function(user) {
-                    const data = {
+                    const mydata = {
                         type: "json",
                         title: "This is a title",
                         more: "This is some example data",
                     };
-
-                    document.querySelector("#logout").style.display = "block";
 
                     fetch(
                             "https://quickstart-vercel-userbase-spaces.vercel.app/api/save", {
@@ -90,7 +88,7 @@
                                     authorization: user.authToken,
                                     "Content-Type": "application/json",
                                 },
-                                body: data,
+                                body: JSON.stringify(mydata),
                                 method: "post",
                             }
                         )
