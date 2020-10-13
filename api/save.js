@@ -24,7 +24,7 @@ module.exports = (req, res) => {
             if (jsondata.type == "json") {
                 let filename = "data.json";
                 var params = {
-                    Body: JSON.stringify(jsondata.data),
+                    Body: JSON.stringify({ test: "ok" }),
                     Bucket: process.env.S3_BUCKET,
                     Key: filename,
                     ContentType: "application/json",
