@@ -11,7 +11,7 @@ module.exports = (req, res) => {
                 Authorization: "Bearer " + process.env.UB_KEY,
             },
         })
-        .then((res) => res.json())
+        .then((result) => result.json())
         .then(function(user) {
             // Configure client for use with Spaces
             const spacesEndpoint = new AWS.Endpoint(process.env.S3_ENDPOINT);
@@ -54,7 +54,7 @@ module.exports = (req, res) => {
             }
 
             s3.putObject(params, function(err, data) {
-                if (err) res.json({ ok: false, msg: "error uploading: " + err.stack });
+                if (err) console.log("error" + err);
                 else console.log(data);
                 res.json({ ok: true, msg: "File sucessfully uploaded" });
             });
