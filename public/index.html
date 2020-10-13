@@ -48,12 +48,12 @@
             ></i>
             Log in
           </button>
-
-                <button id="logout" class="btn btn-outline-dark w-100 mt-2">
-            Log out
-          </button>
             </div>
         </form>
+
+        <button id="logout" class="btn btn-outline-dark w-100 mt-2">
+        Log out
+      </button>
     </div>
 
     <script type="text/javascript" src="https://sdk.userbase.com/2/userbase.js"></script>
@@ -88,6 +88,8 @@
                             "https://quickstart-vercel-userbase-spaces.vercel.app/api/save", {
                                 headers: {
                                     authorization: user.authToken,
+                                    Accept: "application/json",
+                                    "Content-Type": "application/json",
                                 },
                                 body: JSON.stringify(data),
                                 method: "post",
@@ -126,6 +128,7 @@
                 .signOut()
                 .then(() => {
                     // user logged out
+                    alert("logged out");
                 })
                 .catch((e) => console.error(e));
         });
