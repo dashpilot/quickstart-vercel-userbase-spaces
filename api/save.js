@@ -14,6 +14,7 @@ module.exports = (req, res) => {
             console.log(json);
 
             const jsondata = JSON.parse(req.body);
+            console.log(jsondata);
 
             // Configure client for use with Spaces
             const spacesEndpoint = new AWS.Endpoint(process.env.S3_ENDPOINT);
@@ -56,12 +57,12 @@ module.exports = (req, res) => {
             }
 
             s3.putObject(params, function(err, data) {
-                if (err) res.json({ ok: false, msg: "error uploading: " + err.stack });
+                if (err) res.json({ ok: false, msg1: "error uploading: " + err.stack });
                 else console.log(data);
                 res.json({ ok: true, msg: "File sucessfully uploaded" });
             });
         })
         .catch(function(err) {
-            res.json({ ok: false, msg: err });
+            res.json({ ok: false, msg2: err });
         });
 };
