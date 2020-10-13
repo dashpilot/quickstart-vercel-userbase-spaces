@@ -53,6 +53,7 @@ module.exports = (req, res) => {
                 };
             }
 
+            // debugging
             console.log(params);
             console.log(process.env.S3_ENDPOINT);
 
