@@ -48,6 +48,10 @@
             ></i>
             Log in
           </button>
+
+                <button id="logout" class="btn btn-outline-dark w-100" style="display: none">
+            Log out
+          </button>
             </div>
         </form>
     </div>
@@ -77,6 +81,8 @@
                         title: "This is a title",
                         body: "This is some example data",
                     };
+
+                    document.querySelector("#logout").style.display = "block";
 
                     fetch(
                             "https://quickstart-vercel-userbase-spaces.vercel.app/api/save", {
@@ -114,6 +120,15 @@
         document
             .getElementById("login-form")
             .addEventListener("submit", handleLogin);
+
+        document.querySelector("#logout").addEventListener("click", function() {
+            userbase
+                .signOut()
+                .then(() => {
+                    // user logged out
+                })
+                .catch((e) => console.error(e));
+        });
     </script>
 </body>
 
