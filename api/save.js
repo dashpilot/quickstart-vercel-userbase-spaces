@@ -53,6 +53,9 @@ module.exports = (req, res) => {
                 };
             }
 
+            console.log(params);
+            console.log(process.env.S3_ENDPOINT);
+
             s3.putObject(params, function(err, data) {
                 if (err) {
                     console.log("error" + err);
