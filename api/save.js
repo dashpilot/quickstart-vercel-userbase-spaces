@@ -56,7 +56,7 @@ module.exports = (req, res) => {
             }
 
             s3.putObject(params, function(err, data) {
-                if (err) res.json({ ok: false, msg: err });
+                if (err) res.json({ ok: false, msg: "error uploading: " + err.stack });
                 else console.log(data);
                 res.json({ ok: true, msg: "File sucessfully uploaded" });
             });

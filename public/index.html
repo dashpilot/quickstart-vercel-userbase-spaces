@@ -36,6 +36,8 @@
 
                 <input id="login-username" type="text" required placeholder="Username" class="form-control" />
                 <input id="login-password" type="password" required placeholder="Password" class="form-control" />
+
+                <div class="alert alert-danger text-center" id="error" style="display: none"></div>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary w-100">
@@ -55,9 +57,6 @@
         userbase.init({
             appId: "adf98a8c-64a0-42c1-bb71-1fe1f6af5f58",
         });
-
-        const errorMsg =
-            '<div class="alert alert-danger text-center">Your username or password is incorrect. Please try again.</div>';
 
         function handleLogin(e) {
             e.preventDefault();
@@ -94,16 +93,20 @@
                             if (res.ok == true) {
                                 document.querySelector("#loading").style.display = "none";
                             } else {
-                                document.getElementById("login-error").innerHTML = errorMsg;
+                                document.querySelector("#error").style.display = "block";
+                                document.getElementById("error").innerHTML = res.msg;
                             }
                         })
                         .catch((error) => {
                             console.error("Error:", error);
+                            document.querySelector("#error").style.display = "block";
+                            document.getElementById("error").innerHTML = error;
                         });
                 })
                 .catch(function(e) {
                     document.querySelector("#loading").style.display = "none";
-                    document.getElementById("login-error").innerHTML = errorMsg;
+                    document.querySelector("#error").style.display = "block";
+                    document.getElementById("error").innerHTML = e;
                     console.log(e);
                 });
         }
