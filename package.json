@@ -4,6 +4,7 @@
   "description": "Add auth and saving to Digitalocean Spaces to your Vercel projects",
   "main": "index.js",
   "dependencies": {
+    "aws-sdk": "^2.771.0",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {},

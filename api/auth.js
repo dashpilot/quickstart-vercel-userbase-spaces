@@ -13,5 +13,7 @@ module.exports = (req, res) => {
             console.log(json);
             res.json({ ok: true, data: json });
         })
-        .catch((err) => console.error(err));
+        .catch(function(err) {
+            res.json({ ok: false, msg: err });
+        });
 };

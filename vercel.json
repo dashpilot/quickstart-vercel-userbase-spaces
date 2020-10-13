@@ -1,3 +1,8 @@
 {
-    "cleanUrls": true
+    "cleanUrls": true,
+    "routes": [{
+        "src": "/api/auth.js",
+        "methods": ["POST"],
+        "dest": "/api/auth.js"
+    }]
 }
