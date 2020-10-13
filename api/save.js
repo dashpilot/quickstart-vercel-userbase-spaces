@@ -13,7 +13,8 @@ module.exports = (req, res) => {
         .then(function(json) {
             console.log(json);
 
-            const jsondata = JSON.parse(req.body);
+            const { body } = req;
+            const jsondata = body;
             console.log(jsondata);
 
             // Configure client for use with Spaces

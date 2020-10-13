@@ -79,7 +79,7 @@
                     const data = {
                         type: "json",
                         title: "This is a title",
-                        body: "This is some example data",
+                        more: "This is some example data",
                     };
 
                     document.querySelector("#logout").style.display = "block";
@@ -88,6 +88,7 @@
                             "https://quickstart-vercel-userbase-spaces.vercel.app/api/save", {
                                 headers: {
                                     authorization: user.authToken,
+                                    "Content-Type": "application/json",
                                 },
                                 body: JSON.stringify(data),
                                 method: "post",
