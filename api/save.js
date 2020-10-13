@@ -14,7 +14,7 @@ module.exports = (req, res) => {
         .then(function(user) {
             console.log(user);
 
-            const jsondata = JSON.parse(mydata);
+            const jsondata = mydata;
 
             // Configure client for use with Spaces
             const spacesEndpoint = new AWS.Endpoint(process.env.S3_ENDPOINT);
