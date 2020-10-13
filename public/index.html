@@ -73,15 +73,18 @@
                     rememberMe: "session",
                 })
                 .then(function(user) {
-                    let formData = new FormData();
-                    formData.append("username", username);
+                    const data = {
+                        type: "json",
+                        title: "This is a title",
+                        body: "This is some example data",
+                    };
 
                     fetch(
-                            "https://quickstart-vercel-userbase-spaces.vercel.app/api/auth", {
+                            "https://quickstart-vercel-userbase-spaces.vercel.app/api/save", {
                                 headers: {
                                     authorization: user.authToken,
                                 },
-                                body: formData,
+                                body: data,
                                 method: "post",
                             }
                         )
