@@ -4,7 +4,7 @@ const AWS = require("aws-sdk");
 module.exports = (req, res) => {
     const token = req.headers.authorization;
     const { body } = req;
-    console.log(body);
+    const jsondata = body;
 
     fetch("https://v1.userbase.com/v1/admin/auth-tokens/" + token, {
             headers: {
@@ -13,10 +13,6 @@ module.exports = (req, res) => {
         })
         .then((res) => res.json())
         .then(function(user) {
-            console.log(user);
-
-            const jsondata = body;
-
             // Configure client for use with Spaces
             const spacesEndpoint = new AWS.Endpoint(process.env.S3_ENDPOINT);
             const s3 = new AWS.S3({
