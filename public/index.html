@@ -88,16 +88,14 @@
                         more: "This is some example data",
                     };
 
-                    fetch(
-                            "https://quickstart-vercel-userbase-spaces.vercel.app/api/save", {
-                                headers: {
-                                    authorization: user.authToken,
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify(mydata),
-                                method: "post",
-                            }
-                        )
+                    fetch("/api/save", {
+                            headers: {
+                                authorization: user.authToken,
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(mydata),
+                            method: "post",
+                        })
                         .then((response) => response.json())
                         .then((res) => {
                             console.log("Success:", res);
