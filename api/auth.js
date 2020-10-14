@@ -8,7 +8,7 @@ module.exports = (req, res) => {
                 Authorization: "Bearer " + process.env.UB_KEY,
             },
         })
-        .then((res) => res.json())
+        .then((result) => result.json())
         .then(function(json) {
             console.log(json);
             res.json({ ok: true, data: json });

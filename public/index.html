@@ -22,11 +22,19 @@
         .card-body {
             padding-bottom: 10px;
         }
+        
+        .screen {
+            display: none;
+        }
+        
+        #loading {
+            margin-top: 25px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="card">
+    <div class="card screen" id="log-in">
         <div class="card-header">
             <h5>Log in</h5>
         </div>
@@ -40,32 +48,54 @@
                 <div class="alert alert-danger text-center" id="error" style="display: none"></div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary w-100">
-            <i
-              class="fa fa-spinner fa-spin"
-              id="loading"
-              style="display: none"
-            ></i>
-            Log in
-          </button>
+                <button type="submit" class="btn btn-primary w-100">Log in</button>
             </div>
         </form>
+    </div>
 
-        <button id="logout" class="btn btn-outline-dark w-100 mt-2">
-        Log out
-      </button>
+    <div class="card screen" id="logged-in">
+        <div class="card-header">
+            <h5>Logged in</h5>
+        </div>
+        <div class="card-body">
+            <button id="save" class="btn btn-outline-dark w-100">
+          Submit Test Data
+        </button>
+        </div>
+
+        <div class="card-footer">
+            <button id="logout" class="btn btn-primary w-100">Log out</button>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div id="loading">Loading...</div>
     </div>
 
     <script type="text/javascript" src="https://sdk.userbase.com/2/userbase.js"></script>
     <script type="text/javascript">
-        userbase.init({
-            appId: "adf98a8c-64a0-42c1-bb71-1fe1f6af5f58",
-        });
+        userbase
+            .init({
+                appId: "adf98a8c-64a0-42c1-bb71-1fe1f6af5f58",
+            })
+            .then((session) => {
+                // SDK initialized successfully
+                document.querySelector("#loading").style.display = "none";
+                if (session.user) {
+                    // there is a valid active session
+                    console.log(session.user.username);
+                    document.querySelector("#logged-in").style.display = "block";
+                    token = session.user.authToken;
+                } else {
+                    document.querySelector("#log-in").style.display = "block";
+                }
+            })
+            .catch((e) => console.error(e));
 
         function handleLogin(e) {
             e.preventDefault();
 
-            document.querySelector("#loading").style.display = "inline-block";
+            document.querySelector("#loading").style.display = "block";
             const username = document.getElementById("login-username").value;
             const password = document.getElementById("login-password").value;
 
@@ -76,41 +106,8 @@
                     rememberMe: "session",
                 })
                 .then(function(user) {
-                    const mydata = {
-                        type: "json",
-                        title: "This is a title",
-                        more: "This is some example data",
-                    };
-
-                    mydata.data = {
-                        type: "json",
-                        title: "This is a title",
-                        more: "This is some example data",
-                    };
-
-                    fetch("/api/save", {
-                            headers: {
-                                authorization: user.authToken,
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(mydata),
-                            method: "post",
-                        })
-                        .then((response) => response.json())
-                        .then((res) => {
-                            console.log("Success:", res);
-                            if (res.ok == true) {
-                                document.querySelector("#loading").style.display = "none";
-                            } else {
-                                document.querySelector("#error").style.display = "block";
-                                document.getElementById("error").innerHTML = res.msg;
-                            }
-                        })
-                        .catch((error) => {
-                            console.error("Error:", error);
-                            document.querySelector("#error").style.display = "block";
-                            document.getElementById("error").innerHTML = error;
-                        });
+                    document.querySelector("#logged-in").style.display = "block";
+                    document.querySelector("#log-in").style.display = "none";
                 })
                 .catch(function(e) {
                     document.querySelector("#loading").style.display = "none";
@@ -129,9 +126,47 @@
                 .signOut()
                 .then(() => {
                     // user logged out
+
+                    document.querySelector("#logged-in").style.display = "none";
+                    document.querySelector("#log-in").style.display = "block";
                     alert("logged out");
                 })
                 .catch((e) => console.error(e));
+        });
+
+        document.querySelector("#save").addEventListener("click", function() {
+            const mydata = {
+                type: "json",
+            };
+
+            mydata.data = {
+                title: "This is a title",
+                body: "This is some example data",
+            };
+
+            fetch("/api/save", {
+                    headers: {
+                        authorization: token,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(mydata),
+                    method: "post",
+                })
+                .then((response) => response.json())
+                .then((res) => {
+                    console.log("Success:", res);
+                    if (res.ok == true) {
+                        document.querySelector("#loading").style.display = "none";
+                    } else {
+                        document.querySelector("#error").style.display = "block";
+                        document.getElementById("error").innerHTML = res.msg;
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    document.querySelector("#error").style.display = "block";
+                    document.getElementById("error").innerHTML = error;
+                });
         });
     </script>
 </body>
