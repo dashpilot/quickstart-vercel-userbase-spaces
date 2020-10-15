@@ -11,7 +11,7 @@ Deploy this repo to Vercel using the 'Deploy to Vercel'-button below:
 
 ### 2. Add your S3 and Userbase credentials as environment variables
 
-In Vercel, go to settings > environment variables and create the following environment variables for your Amazon S3/Digitalocean Spaces settings and Userbase secret key
+During the deploy, you'll be asked for the following environment variables (or add them later under settings > environment variables):
 
 `S3_ENDPOINT`: your S3/Spaces endpoint (e.g ams3.digitaloceanspaces.com)\
 `S3_KEY`: your S3/Spaces key\
