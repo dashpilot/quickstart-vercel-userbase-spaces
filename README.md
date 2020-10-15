@@ -16,7 +16,7 @@ In Vercel, go to settings > environment variables and create the following envir
 `S3_ENDPOINT`: your S3/Spaces endpoint (e.g ams3.digitaloceanspaces.com)\
 `S3_KEY`: your S3/Spaces key\
 `S3_SECRET`: your S3/Spaces secret\
-`S3_BUCKET`: your S3/Spaces bucket
+`S3_BUCKET`: your S3/Spaces bucket\
 `UB_KEY`: your userbase.com secret key
 
 ### 3. Fill in your Userbase.com app id
