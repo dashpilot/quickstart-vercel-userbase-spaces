@@ -7,7 +7,7 @@ Vercel function to save data and images to S3/Digitalocean Spaces. Uses userbase
 
 Deploy this repo to Vercel using the 'Deploy to Vercel'-button below:
 
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/dashpilot/quickstart-netlify-spaces"><img src="https://www.netlify.com/img/deploy/button.svg" /></a>
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fdashpilot%2Fquickstart-vercel-userbase-spaces&env=S3_ENDPOINT,S3_KEY,S3_SECRET,S3_BUCKET,UB_KEY)
 
 ### 2. Add your S3 and Userbase credentials as environment variables
 
