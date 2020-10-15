@@ -1,6 +1,6 @@
 # quickstart-vercel-userbase-spaces
 
-Vercel function to save data and images to S3/Digitalocean Spaces. Uses userbase.com for authentication. This project is similar to my other project https://github.com/dashpilot/quickstart-netlify-spaces, but for Vercel and Userbase.
+Vercel function to save data and images to S3/Digitalocean Spaces. Uses userbase.com for authentication. This project is similar to my other project https://github.com/dashpilot/quickstart-netlify-spaces, but for Vercel and Userbase. Contains a full example in index.html
 
 ## How To:
 
