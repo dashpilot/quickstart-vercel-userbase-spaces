@@ -20,7 +20,7 @@ In Vercel, go to settings > environment variables and create the following envir
 `UB_KEY`: your userbase.com secret key
 
 ### 3. Fill in your Userbase.com app id
-Fill in your Userbase.com app id in public/index.html (just below userbase.init)
+Fill in your Userbase.com app id in public/index.html (just below userbase.init) and visit index.html to log in. After you've logged in, press the 'save test data'-button to test if everything works. You should now see a data.json file in your S3/Spaces bucket.
 
 ### 4. Press the :star: button
 Don't forget to press the :star: button to let me know I should continue improving this project
